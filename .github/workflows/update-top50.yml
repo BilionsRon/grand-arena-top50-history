@@ -29,6 +29,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          git add contests.json leaderboards/ data/
-          git commit -m "Auto update contests & leaderboards - $(date '+%Y-%m-%d %H:%M UTC')" || echo "No changes"
-          git push
+          git add contests.json data/ leaderboards/ || true
+          git commit -m "Auto update contests & leaderboards - $(date '+%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
+          git push || echo "Push skipped (no changes or already up-to-date)"
